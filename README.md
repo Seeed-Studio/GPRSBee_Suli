@@ -1,4 +1,4 @@
-GPRSBee
+GPRSBee Suli
 -------------------------------------------------------------
 
 ----
@@ -17,5 +17,5 @@ global distributors and partners to push open hardware movement.<br>
 
 
 
-[![Analytics](https://ga-beacon.appspot.com/UA-46589105-3/GPRSInterface)](https://github.com/igrigorik/ga-beacon)
+[![Analytics](https://ga-beacon.appspot.com/UA-46589105-3/GPRSBee_Suli)](https://github.com/igrigorik/ga-beacon)
 
