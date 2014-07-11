@@ -1,4 +1,11 @@
+/*
+GPRS TCP Connection
 
+This sketch is used to test GPRS Bee's TCP Connection func.
+
+create on 2013/12/5, version: 0.1
+by lawliet.zou(lawliet.zou@gmail.com)
+*/
 #include <GPRS_Arduino.h>
 #include <SoftwareSerial.h>
 #include <Wire.h>

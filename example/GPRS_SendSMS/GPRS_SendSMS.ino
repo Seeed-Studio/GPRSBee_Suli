@@ -1,9 +1,9 @@
 /*
-GPRS Connect TCP
+GPRS Send SMS
 
-This sketch is used to test seeeduino GPRS's send SMS func.
-to make it work, you should insert SIM card to Seeeduino GPRS 
-and replace the phoneNumber,enjoy it!
+This sketch is used to test GPRS Bee's sending SMS func.
+to make it work, you need to replace the PHONE_NUMBER and 
+MESSAGE, enjoy it!
 
 create on 2013/12/5, version: 0.1
 by lawliet.zou(lawliet.zou@gmail.com)
