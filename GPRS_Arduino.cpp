@@ -2,10 +2,9 @@
 * gprs.cpp 
 * A library for SeeedStudio seeeduino GPRS shield 
 *  
-* Copyright (c) 2013 seeed technology inc. 
-* Author      	: 	lawliet.zou(lawliet.zou@gmail.com)
-* Create Time	: 	Dec 23, 2013 
-* Change Log 	: 	
+* Copyright (c) 2014 seeed technology inc. 
+* Author: lawliet.zou(lawliet.zou@gmail.com)
+* Create Time: Dec 23, 2013     
 *
 * The MIT License (MIT)
 *
@@ -37,28 +36,28 @@ GPRS* GPRS::inst;
 GPRS::GPRS(PIN_T tx, PIN_T rx, PIN_T power, uint32_t baudRate, const char* apn, const char* userName, const char* passWord):gprsSerial(tx,rx)
 {
     inst = this;
-	_powerPin = power;
+    _powerPin = power;
     _apn = apn;
     _userName = userName;
     _passWord = passWord;
-	sim800_init(&gprsSerial, -1, baudRate);
+    sim800_init(&gprsSerial, -1, baudRate);
 }
 
 int GPRS::init(void)
 {
-	sim800_power_on(_powerPin);
-	if(0 != sim800_check_with_cmd("AT\r\n","OK",DEFAULT_TIMEOUT,CMD)){
-		return -1;
-	}
-	
-	if(0 != sim800_check_with_cmd("AT+CFUN=1\r\n","OK",DEFAULT_TIMEOUT,CMD)){
-		return -1;
-	}
-	
+    sim800_power_on(_powerPin);
+    if(0 != sim800_check_with_cmd("AT\r\n","OK",DEFAULT_TIMEOUT,CMD)){
+        return -1;
+    }
+    
+    if(0 != sim800_check_with_cmd("AT+CFUN=1\r\n","OK",DEFAULT_TIMEOUT,CMD)){
+        return -1;
+    }
+    
     if(0 != checkSIMStatus()) {
         return -1;
     }
-	
+    
     return 0;
 }
 
@@ -86,7 +85,7 @@ int GPRS::checkSIMStatus(void)
 
 int GPRS::sendSMS(char *number, char *data)
 {
-	char cmd[32];
+    char cmd[32];
     if(0 != sim800_check_with_cmd("AT+CMGF=1\r\n", "OK", DEFAULT_TIMEOUT,CMD)) { // Set message mode to ASCII
         return -1;
     }
@@ -96,23 +95,23 @@ int GPRS::sendSMS(char *number, char *data)
         return -1;
     }
     suli_delay_ms(1000);
-	sim800_send_cmd(data);
+    sim800_send_cmd(data);
     suli_delay_ms(500);
-	sim800_send_End_Mark();
-	return 0;
+    sim800_send_End_Mark();
+    return 0;
 }
 
 int GPRS::readSMS(int messageIndex, char *message,int length)
 {
-	int i = 0;
+    int i = 0;
     char gprsBuffer[100];
-	char cmd[16];
+    char cmd[16];
     char *p,*s;
-	
-	sim800_check_with_cmd("AT+CMGF=1\r\n","OK",DEFAULT_TIMEOUT,CMD);
-	suli_delay_ms(1000);
-	sprintf(cmd,"AT+CMGR=%d\r\n",messageIndex);
-	sim800_send_cmd(cmd);
+    
+    sim800_check_with_cmd("AT+CMGF=1\r\n","OK",DEFAULT_TIMEOUT,CMD);
+    suli_delay_ms(1000);
+    sprintf(cmd,"AT+CMGR=%d\r\n",messageIndex);
+    sim800_send_cmd(cmd);
     sim800_clean_buffer(gprsBuffer,100);
     sim800_read_buffer(gprsBuffer,100,DEFAULT_TIMEOUT);
     if(NULL != ( s = strstr(gprsBuffer,"+CMGR"))){
@@ -124,7 +123,7 @@ int GPRS::readSMS(int messageIndex, char *message,int length)
             message[i] = '\0';
         }
     }
-    return 0;	
+    return 0;   
 }
 
 int GPRS::deleteSMS(int index)
@@ -137,13 +136,13 @@ int GPRS::deleteSMS(int index)
 
 int GPRS::callUp(char *number)
 {
-	char cmd[24];
+    char cmd[24];
     if(0 != sim800_check_with_cmd("AT+COLP=1\r\n","OK",DEFAULT_TIMEOUT,CMD)) {
         return -1;
     }
     suli_delay_ms(1000);
-	sprintf(cmd,"ATD%s;\r\n", number);
-	sim800_send_cmd(cmd);
+    sprintf(cmd,"ATD%s;\r\n", number);
+    sim800_send_cmd(cmd);
     return 0;
 }
 
@@ -152,7 +151,6 @@ int GPRS::answer(void)
     sim800_send_cmd("ATA\r\n");
     return 0;
 }
-
 
 bool GPRS::join()
 {
@@ -253,7 +251,7 @@ int GPRS::readable(void)
 
 int GPRS::wait_readable(int wait_time)
 {
-	return sim800_wait_readable(wait_time);
+    return sim800_wait_readable(wait_time);
 }
 
 int GPRS::wait_writeable(int req_size)
@@ -303,6 +301,6 @@ uint32_t GPRS::str_to_ip(const char* str)
 
 char* GPRS::getIPAddress()
 {
-	snprintf(ip_string, sizeof(ip_string), "%d.%d.%d.%d", (_ip>>24)&0xff,(_ip>>16)&0xff,(_ip>>8)&0xff,_ip&0xff); 
-	return ip_string;
+    snprintf(ip_string, sizeof(ip_string), "%d.%d.%d.%d", (_ip>>24)&0xff,(_ip>>16)&0xff,(_ip>>8)&0xff,_ip&0xff); 
+    return ip_string;
 }

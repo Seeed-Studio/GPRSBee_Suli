@@ -2,10 +2,9 @@
 * sim800.h 
 * A library for SeeedStudio seeeduino GPRS shield 
 *  
-* Copyright (c) 2013 seeed technology inc. 
-* Author  		: 	lawliet.zou(lawliet.zou@gmail.com)
-* Create Time	: 	Dec 23, 2013 
-* Change Log 	: 
+* Copyright (c) 2014 seeed technology inc. 
+* Author: lawliet.zou(lawliet.zou@gmail.com)
+* Create Time: Dec 23, 2013  
 *
 * The MIT License (MIT)
 *
@@ -34,18 +33,18 @@
 #include "Suli.h"
 #include <SoftwareSerial.h>
 
-#define TRUE 				1
-#define FALSE 				0
-#define DEFAULT_TIMEOUT   	5
+#define TRUE                1
+#define FALSE               0
+#define DEFAULT_TIMEOUT     5
 
 enum DataType {
-    CMD		= 0,
-    DATA	= 1,
+    CMD     = 0,
+    DATA    = 1,
 };
 
 void  sim800_init(void * uart_device, int16 uart_num, uint32 baud);
 void  sim800_power_on(PIN_T powerPin);
-int	  sim800_check_readable();
+int   sim800_check_readable();
 int   sim800_wait_readable(int wait_time);
 void  sim800_flush_serial();
 char  sim800_read_byte(void);
