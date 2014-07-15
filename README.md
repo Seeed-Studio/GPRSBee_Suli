@@ -1,6 +1,6 @@
 ##GPRSBee Suli
-[![GPRS Bee](http://www.seeedstudio.com/depot/images/product/GPRS%20Bee%20SMA%20Antenna.jpg)](http://goo.gl/UC8DkO)
-The GPRS Bee provides you a way to use the GSM/GPRS cell phone network to receive data from a remote location.It has the bee form factor and can be used in any system that has a bee socket like the Seeeduino Stalker or the Xbee Shield. Based on the SIM800 module from SIMCOM,the GPRS Bee can be configured and controlled via its UART using simple AT commands.To reduce the size,it uses SIM cards of the MicroSIM form factor. For more information, you can visit our [Wiki](http://www.seeedstudio.com/wiki/GPRS_Bee)
+[![GPRS Bee](http://www.seeedstudio.com/depot/images/product/GPRS%20Bee%20SMA%20Antenna.jpg)](http://www.seeedstudio.com/depot/GPRS-Bee-w-SMA-Antenna-SIM-800-Module-p-1920.html?cPath=19_20)
+The GPRS Bee provides you a way to use the GSM/GPRS cell phone network to transmit or receive data from a remote location.You can use it to send/receive SMS messages, GPRS wireless communicating is also supported. Moreover, if you have a Bluetooth Headset ,you can also make a phone call with it. Based on the SIM800H module from SIMCOM,the GPRS Bee can be configured and controlled via its UART by using AT commands.To reduce the size, it uses SIM cards of the Micro-SIM form factor. For more information, you can visit our [Wiki Page](http://www.seeedstudio.com/wiki/GPRS_Bee)
 ###Features
 + SIM800H module
 + Power supply 3.4~4.4V
